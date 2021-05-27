@@ -168,7 +168,7 @@ Ca. Zeitangaben in Millisek.:
 
 ### Labor
 
-![image-20210527111650174](C:\Users\TBZ\AppData\Roaming\Typora\typora-user-images\image-20210527111650174.png)
+
 
 ## Commands
 
