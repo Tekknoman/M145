@@ -12,21 +12,21 @@ Ihr Computer ist über ein Layer 2 VPN mit dem GNS3 Server verbunden. Das hat de
 
 ## Parameter
 
-## Generell
+### Generell
 
 | Subnetz A | 192.168.23.0/24   |
 | --------- | ----------------- |
 | Subnetz B | 192.168.25.0/24   |
 | Router OS | MikroTik CHR V6.* |
 
-## R1
+### R1
 
 | Interface | IP Address     |
 | --------- | -------------- |
 | ether2    | 192.168.25.1   |
 | ehter1    | 192.168.23.133 |
 
-## R2
+### R2
 
 | Interface | IP Address   |
 | --------- | ------------ |
