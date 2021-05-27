@@ -168,7 +168,7 @@ Ca. Zeitangaben in Millisek.:
 
 ### Labor
 
-
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_01/Iamges/Labor.png?raw=true)
 
 ## Commands
 
