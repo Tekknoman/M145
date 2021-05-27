@@ -7,7 +7,7 @@
 IP für Subnetz B setzen:
 
 ```bash
-/ip address add address=192.168.25.1/24 interface=ether2
+ip address add address=192.168.25.1/24 interface=ether2
 ```
 
 IP für Subnetz A wurde automatisch bezogen.
@@ -17,7 +17,7 @@ IP für Subnetz A wurde automatisch bezogen.
 IP für Subnetz B setzen:
 
 ```bash
-/ip address add address=192.168.25.2/24 interface=ether2
+ip address add address=192.168.25.2/24 interface=ether2
 ```
 
 
@@ -71,7 +71,7 @@ ip address
 IP Adresse an interface binden:
 
 ```bash
-/ip address add address=(IP-Adresse und CIDR) interface=(Interface)
+ip address add address=(IP-Adresse und CIDR) interface=(Interface)
 ```
 
 Alle IP-Adressen anzeigen:
@@ -83,5 +83,5 @@ ip address print
  IP-Adresse und Interface löschen:
 
 ```bash
-remove (nummer)
+ip address remove (nummer)
 ```
