@@ -54,7 +54,9 @@ Output von `/ip route print`:
 
 Eine Route war bereits richtig konfiguriert. Zusätzlich musste aber die Route in das Subnet A noch hinzugefügt werden:
 
-
+```bash
+ip route add dst-address=192.168.23.0/24 gateway=192.168.25.1
+```
 
 Output von `/ip route print`:
 
