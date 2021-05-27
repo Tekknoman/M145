@@ -16,21 +16,21 @@ Ihr Computer ist über ein Layer 2 VPN mit dem GNS3 Server verbunden. Das hat de
 
 | Subnetz A | 192.168.23.0/24   |
 | --------- | ----------------- |
-| Subnetz B | 192.168.25.0/24   |
+| Subnetz B | 192.168.54.0/24   |
 | Router OS | MikroTik CHR V6.* |
 
 ### R1
 
-| Interface | IP Address     |
-| --------- | -------------- |
-| ether2    | 192.168.25.1   |
-| ehter1    | 192.168.23.133 |
+| Interface | IP Address     |          |
+| --------- | -------------- | -------- |
+| ether2    | 192.168.54.1   | Statisch |
+| ehter1    | 192.168.23.133 | DHCP     |
 
 ### R2
 
-| Interface | IP Address   |
-| --------- | ------------ |
-| ether2    | 192.168.25.2 |
+| Interface | IP Address   |          |
+| --------- | ------------ | -------- |
+| ether2    | 192.168.54.2 | Statisch |
 
 ## IP Adressen festlegen
 
@@ -39,7 +39,7 @@ Ihr Computer ist über ein Layer 2 VPN mit dem GNS3 Server verbunden. Das hat de
 IP für Subnetz B setzen:
 
 ```bash
-ip address add address=192.168.25.1/24 interface=ether2
+ip address add address=192.168.54.1/24 interface=ether2
 ```
 
 IP für Subnetz A wurde automatisch bezogen.
@@ -49,10 +49,8 @@ IP für Subnetz A wurde automatisch bezogen.
 IP für Subnetz B setzen:
 
 ```bash
-ip address add address=192.168.25.2/24 interface=ether2
+ip address add address=192.168.54.2/24 interface=ether2
 ```
-
-
 
 ## Routing
 
@@ -63,10 +61,8 @@ Damit die Pakete in das Subnetz B an den richtigen Router gesendet werden, muss 
 Win PS: 
 
 ```bash
-route add 192.168.25.0 MASK 255.255.255.0 192.168.23.133
+route add 192.168.54.0 MASK 255.255.255.0 192.168.23.133
 ```
-
-
 
 ### Auf R1:
 
@@ -77,25 +73,23 @@ Output von `ip route print`:
 ```bash
  #      DST-ADDRESS        PREF-SRC        GATEWAY            DISTANCE
  0 ADC  192.168.23.0/24    192.168.23.133  ether1                    0
- 1 ADC  192.168.25.0/24    192.168.25.1    ether2                    0
+ 1 ADC  192.168.54.0/24    192.168.54.1    ether2                    0
 ```
-
-
 
 ### Auf R2:
 
 Eine Route war bereits richtig konfiguriert. Zusätzlich musste aber die Route in das Subnet A noch hinzugefügt werden:
 
 ```bash
-ip route add dst-address=192.168.23.0/24 gateway=192.168.25.1
+ip route add dst-address=192.168.23.0/24 gateway=192.168.54.1
 ```
 
 Output von `ip route print`:
 
 ```bash
  #      DST-ADDRESS        PREF-SRC        GATEWAY            DISTANCE
- 0 A S  192.168.23.0/24                    192.168.25.1              1
- 1 ADC  192.168.25.0/24    192.168.25.2    ether2                    0
+ 0 A S  192.168.23.0/24                    192.168.54.1              1
+ 1 ADC  192.168.54.0/24    192.168.54.2    ether2                    0
 ```
 
 ## Überprüfung
@@ -127,17 +121,17 @@ Ca. Zeitangaben in Millisek.:
 ether2:
 
 ```powershell
-ping 192.168.25.1
+ping 192.168.54.1
 ```
 
 ```powershell
-Ping wird ausgeführt für 192.168.25.1 mit 32 Bytes Daten:
-Antwort von 192.168.25.1: Bytes=32 Zeit=7ms TTL=64
-Antwort von 192.168.25.1: Bytes=32 Zeit=7ms TTL=64
-Antwort von 192.168.25.1: Bytes=32 Zeit=7ms TTL=64
-Antwort von 192.168.25.1: Bytes=32 Zeit=8ms TTL=64
+Ping wird ausgeführt für 192.168.54.1 mit 32 Bytes Daten:
+Antwort von 192.168.54.1: Bytes=32 Zeit=7ms TTL=64
+Antwort von 192.168.54.1: Bytes=32 Zeit=7ms TTL=64
+Antwort von 192.168.54.1: Bytes=32 Zeit=7ms TTL=64
+Antwort von 192.168.54.1: Bytes=32 Zeit=8ms TTL=64
 
-Ping-Statistik für 192.168.25.1:
+Ping-Statistik für 192.168.54.1:
     Pakete: Gesendet = 4, Empfangen = 4, Verloren = 0
     (0% Verlust),
 Ca. Zeitangaben in Millisek.:
@@ -149,17 +143,17 @@ Ca. Zeitangaben in Millisek.:
 ether2:
 
 ```powershell
-ping 192.168.25.2
+ping 192.168.54.2
 ```
 
 ```powershell
-Ping wird ausgeführt für 192.168.25.2 mit 32 Bytes Daten:
-Antwort von 192.168.25.2: Bytes=32 Zeit=8ms TTL=63
-Antwort von 192.168.25.2: Bytes=32 Zeit=9ms TTL=63
-Antwort von 192.168.25.2: Bytes=32 Zeit=9ms TTL=63
-Antwort von 192.168.25.2: Bytes=32 Zeit=9ms TTL=63
+Ping wird ausgeführt für 192.168.54.2 mit 32 Bytes Daten:
+Antwort von 192.168.54.2: Bytes=32 Zeit=8ms TTL=63
+Antwort von 192.168.54.2: Bytes=32 Zeit=9ms TTL=63
+Antwort von 192.168.54.2: Bytes=32 Zeit=9ms TTL=63
+Antwort von 192.168.54.2: Bytes=32 Zeit=9ms TTL=63
 
-Ping-Statistik für 192.168.25.2:
+Ping-Statistik für 192.168.54.2:
     Pakete: Gesendet = 4, Empfangen = 4, Verloren = 0
     (0% Verlust),
 Ca. Zeitangaben in Millisek.:
