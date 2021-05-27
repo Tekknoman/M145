@@ -166,6 +166,10 @@ Ca. Zeitangaben in Millisek.:
     Minimum = 8ms, Maximum = 9ms, Mittelwert = 8ms
 ```
 
+### Labor
+
+![image-20210527111650174](C:\Users\TBZ\AppData\Roaming\Typora\typora-user-images\image-20210527111650174.png)
+
 ## Commands
 
  Auf die IP-Adressen Einstellungen zugreifen:
