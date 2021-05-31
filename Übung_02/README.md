@@ -130,9 +130,41 @@ ip route add dst-address=192.168.23.0/24 gateway=192.168.54.1
 
 ### R1
 
+#### R1 --> VPC:
 
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/R1-vpc.png)
+
+#### R1 --> R2 (Subnetz C bzw. Bridge):
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/r1-r2.png)
+
+### R2
+
+#### R2 --> VPC:
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/R2-vpc.png)
+
+### VPC
+
+#### VPC --> R1:
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/vpc-r1.png)
+
+#### VPC --> R2 (Subnetz B bzw. ether2):
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/vpc-r2b.png)
+
+#### VPC --> R2 (Subnetz C bzw. bridge):
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/vpc-r2c.png)
+
+#### Netzwerkkonfiguration über dhcp erhalten:
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.vpc.png)
 
 ### Labor
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/Labor.png)
 
 ## Router Config Export
 

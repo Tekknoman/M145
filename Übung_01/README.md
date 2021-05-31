@@ -98,7 +98,7 @@ Wir habe die Richtigkeit der Einstellungen mit Pings von unserem PC aus getestet
 
 ### R1
 
-ether1:
+#### ether1:
 
 ```powershell
 ping 192.168.23.133
@@ -118,7 +118,7 @@ Ca. Zeitangaben in Millisek.:
     Minimum = 7ms, Maximum = 15ms, Mittelwert = 9ms
 ```
 
-ether2:
+#### ether2:
 
 ```powershell
 ping 192.168.54.1
@@ -140,7 +140,7 @@ Ca. Zeitangaben in Millisek.:
 
 ### R2
 
-ether2:
+#### ether2:
 
 ```powershell
 ping 192.168.54.2
@@ -166,31 +166,31 @@ Ca. Zeitangaben in Millisek.:
 
 ## Commands
 
- Auf die IP-Adressen Einstellungen zugreifen:
+####  Auf die IP-Adressen Einstellungen zugreifen:
 
 ```bash
 ip address
 ```
 
-IP Adresse an interface binden:
+#### IP Adresse an interface binden:
 
 ```bash
 ip address add address=(IP-Adresse und CIDR) interface=(Interface)
 ```
 
-Alle IP-Adressen anzeigen:
+#### Alle IP-Adressen anzeigen:
 
 ```bash
 ip address print 
 ```
 
- IP-Adresse und Interface löschen:
+####  IP-Adresse und Interface löschen:
 
 ```bash
 ip address remove (nummer)
 ```
 
-Route hinzufügen:
+#### Route hinzufügen:
 
 ```bash
 ip route add dst-address=(Zielnetz/CIDR) gateway=(Gateway bzw. Adresse des Interfaces)
