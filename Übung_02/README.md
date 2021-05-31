@@ -68,5 +68,23 @@ Um die Richtigkeit der Einstellungen zu überprüfen, haben wird die Konfigurati
 
 Den DHCP haben wir ebenfalls über das Webinteface via DHCP Setup konfiguriert:
 
- 
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.png)
+
+Die richtige Bridge auswählen:
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.1.png)
+
+Adessbereich angeben:
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.2.png)
+
+Gateway festlegen:
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.3.png)
+
+DHCP Relay (keine angabe):
+
+![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.4.png)
+
+
 
