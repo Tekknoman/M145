@@ -31,7 +31,7 @@ Grundlage aus [Übung 01](https://github.com/EloiMusk/M145/tree/prod/Übung_01#p
 | Interface | IP Address     |          |
 | --------- | -------------- | -------- |
 | ether2    | 192.168.54.1   | Statisch |
-| ehter1    | 192.168.23.133 | DHCP     |
+| ehter1    | 192.168.23.136 | DHCP     |
 
 ### R2
 
@@ -66,6 +66,8 @@ Um die Richtigkeit der Einstellungen zu überprüfen, haben wird die Konfigurati
 
 ## DHCP
 
+### Auf R2
+
 Den DHCP haben wir ebenfalls über das Webinteface via DHCP Setup konfiguriert:
 
 ![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.png)
@@ -86,5 +88,118 @@ DHCP Relay (keine angabe):
 
 ![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.4.png)
 
+### Auf VPCs
 
+Die VPCs müssen nun eine Netzwerkkonfiguration vom DHCP anfordern.
+
+Dies geht wie folgt (in der Konsole der VPCs):
+
+```bash
+dhcp
+```
+
+bzw.
+
+```bash
+ip dhcp
+```
+
+## Routing
+
+Damit nun alle Pakete aus und in Subnetz C Richtig geroutet werden, muss dies noch eingestellt werden. Alle anderen Routing Einträge sollten bereits on [Übung 01](https://github.com/EloiMusk/M145/tree/prod/Übung_01#routing) noch richtig konfiguriert sein.
+
+### Auf meinem eigenen Gerät:
+
+```powershell
+route add 192.168.104.0 MASK 255.255.255.0 192.168.23.136
+```
+
+### Auf R1
+
+```bash
+ip route add dst-address=192.168.104.0/24 gateway=192.168.54.2
+```
+
+### Auf R2
+
+```bash
+ip route add dst-address=192.168.23.0/24 gateway=192.168.54.1
+```
+
+## Überprüfung
+
+### R1
+
+
+
+### Labor
+
+## Router Config Export
+
+### R1
+
+```bash
+# may/31/2021 03:05:08 by RouterOS 6.47
+# software id =
+#
+#
+#
+/interface ethernet
+set [ find default-name=ether1 ] disable-running-check=no
+set [ find default-name=ether2 ] disable-running-check=no
+set [ find default-name=ether3 ] disable-running-check=no
+set [ find default-name=ether4 ] disable-running-check=no
+set [ find default-name=ether5 ] disable-running-check=no
+set [ find default-name=ether6 ] disable-running-check=no
+set [ find default-name=ether7 ] disable-running-check=no
+set [ find default-name=ether8 ] disable-running-check=no
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/ip address
+add address=192.168.54.1/24 interface=ether2 network=192.168.54.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/ip route
+add distance=1 dst-address=192.168.104.0/24 gateway=192.168.54.2
+```
+
+### R2
+
+```bash
+# may/31/2021 03:05:57 by RouterOS 6.47
+# software id =
+#
+#
+#
+/interface bridge
+add name=bridge1
+/interface ethernet
+set [ find default-name=ether1 ] disable-running-check=no
+set [ find default-name=ether2 ] disable-running-check=no
+set [ find default-name=ether3 ] disable-running-check=no
+set [ find default-name=ether4 ] disable-running-check=no
+set [ find default-name=ether5 ] disable-running-check=no
+set [ find default-name=ether6 ] disable-running-check=no
+set [ find default-name=ether7 ] disable-running-check=no
+set [ find default-name=ether8 ] disable-running-check=no
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/ip pool
+add name=dhcp_pool0 ranges=192.168.104.2-192.168.104.254
+/ip dhcp-server
+add address-pool=dhcp_pool0 disabled=no interface=bridge1 name=dhcp1
+/interface bridge port
+add bridge=bridge1 interface=ether3
+add bridge=bridge1 interface=ether4
+add bridge=bridge1 interface=ether5
+/ip address
+add address=192.168.54.2/24 interface=ether2 network=192.168.54.0
+add address=192.168.104.1/24 interface=bridge1 network=192.168.104.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/ip dhcp-server network
+add address=192.168.104.0/24 dns-server=8.8.8.8 gateway=192.168.104.1
+/ip route
+add distance=1 dst-address=192.168.23.0/24 gateway=192.168.54.1
+```
 
