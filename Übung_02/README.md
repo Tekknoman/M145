@@ -48,7 +48,7 @@ Die Virtuelle Bridge haben wir über das Webinterface von R2 erstellt.
 
 Als erstes mussten wir eine Bridge erstellen:
 
-![Overview Bridges](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/bridge_overview.png)
+![Overview Bridges](./Images/bridge_overview.png)
 
 Dort haben wir die Einstellungen vorerst bei den Default Einstellungen belassen.
 
@@ -56,13 +56,13 @@ Dort haben wir die Einstellungen vorerst bei den Default Einstellungen belassen.
 
 Anschliessend mussten wir die gewünschten Ports der Bridge zuweisen:
 
-![Overview Ports](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/ports_overview.png)
+![Overview Ports](./Images/ports_overview.png)
 
 ### Bridge überprüfen
 
 Um die Richtigkeit der Einstellungen zu überprüfen, haben wird die Konfiguration der zuvor hinzugefügten Bridge nochmals angeschaut und konnten dort alle Ports vorfinden (da wir nur 2 VPCs angeschlossen haben werden nur 2 Ports als "Designated angezeigt"):
 
-![Bridged ports](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/bridge_ports.png)
+![Bridged ports](./Images/bridge_ports.png)
 
 ## DHCP
 
@@ -70,23 +70,23 @@ Um die Richtigkeit der Einstellungen zu überprüfen, haben wird die Konfigurati
 
 Den DHCP haben wir ebenfalls über das Webinteface via DHCP Setup konfiguriert:
 
-![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.png)
+![](./Images/dhcp.png)
 
 Die richtige Bridge auswählen:
 
-![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.1.png)
+![](./Images/dhcp.1.png)
 
 Adessbereich angeben:
 
-![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.2.png)
+![](./Images/dhcp.2.png)
 
 Gateway festlegen:
 
-![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.3.png)
+![](./Images/dhcp.3.png)
 
 DHCP Relay (keine angabe):
 
-![](https://github.com/EloiMusk/M145/blob/prod/%C3%9Cbung_02/Images/dhcp.4.png)
+![](./Images/dhcp.4.png)
 
 ### Auf VPCs
 
