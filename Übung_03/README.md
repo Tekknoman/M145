@@ -30,6 +30,37 @@
 | VLAN Entwicklung | Gruppennummer 4 * 100 + 2  = 402 |
 | VLAN Verkauf     | Gruppennummer 4 * 100 + 3  = 403 |
 
+### SW1
+
+| Port   | VLAN ID(s)    | Tagged / Untagged |
+| ------ | ------------- | ----------------- |
+| ether4 | 401           | Untagged          |
+| ether5 | 402           | Untagged          |
+| ether6 | 403           | Untegged          |
+| ether8 | 401, 402, 403 | Tagged            |
+
+### SW2
+
+| Port   | VLAN ID(s)    | Tagged / Untagged |
+| ------ | ------------- | ----------------- |
+| ether4 | 401           | Untagged          |
+| ether5 | 402           | Untagged          |
+| ether6 | 403           | Untegged          |
+| ether8 | 401, 402, 403 | Tagged            |
+
+### VPCs
+
+| Name     | Interface | IP-Adresse | VLAN |
+| -------- | --------- | ---------- | ---- |
+| Net1_PC1 | e0        |            |      |
+| Net1_PC2 | e0        |            |      |
+| Net2_PC1 | e0        |            |      |
+| Net2_PC2 | e0        |            |      |
+| Net3_PC1 | e0        |            |      |
+| Net3_PC2 | e0        |            |      |
+
+
+
 ## Aufgaben
 
 ![image-20210615162052226](images/image-20210615162052226.png)
@@ -37,9 +68,6 @@
 ### Konfiguration VLANs
 
 Da der Ablauf der Konfiguration der VLANs auf beiden Switches der selbe ist, haben wird der Prozess nur einmal dokumentiert.
-
-#### Parameter
-
 
 
 #### Bridge
@@ -58,7 +86,7 @@ Wichtig!! Unter VLAN muss VLAN Filtering eingeschaltet werden:
 
 Webfig > Bridge > Ports > Add New
 
-Anschliessend müssen die Ports der Parameter Tabelle entsprechend angefügt werden.
+Anschliessend müssen die Ports der [Parameter Tabelle](#Parameter) entsprechend angefügt werden.
 
 Wichtig!! Unter VLAN muss die dem Interface entsprechende VLAN ID bzw. PVID und Tagged oder Untagged eingetragen werden:
 
@@ -79,3 +107,7 @@ Die VLANs werden immer Port zu VPC Untagged zu Trunkport Tagged mit der entsprec
 Anschliessend kann die Konfiguration unter Webfig > Bridge > Hosts überprüft werden:
 
 ![image-20210615165634273](images/image-20210615165634273.png)
+
+### IPs auf den VPCs
+
+Anschliessend mussten noch Statische IP-Adressen für die VPCs gesetzt werden (Siehe [Parameter](#Parameter)).
