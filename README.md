@@ -7,6 +7,7 @@
 
 ## Table of contents
 
-- [Übung_01](https://github.com/EloiMusk/M145/tree/prod/Übung_01)
-- [Übung_02](https://github.com/EloiMusk/M145/tree/prod/Übung_02)
+- [Übung_01](./Übung_01)
+- [Übung_02](./Übung_02)
+- [Übung_03](./Übung_03)
 
