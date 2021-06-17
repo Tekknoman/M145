@@ -7,11 +7,8 @@
 - Versuchen Sie folgende Fragen zu Ihrem Gerät zu beantworten:
 
   1. Welcher Hardware-Typ hat ihr WLAN interface (Marke + Modellnummer)?
-
   2. Welche Frequenzbänder unterstützt(en) ihr(e) WLAN interface(s)?
-
   3. Wie viele physischen WLAN interfaces sind auf ihrem Gerät vorhanden?
-
   4. Was für ein Typ Antenne besitzt ihr Gerät?
 
 - Aktivieren Sie ihr WLAN interface.
@@ -70,3 +67,15 @@
 - Sie können ein sicheres WLAN auf einem WLAN fähigen MikroTik Router konfigurieren
 - Sie können mehrere SSIDs auf einem physischen WLAN interface aufschalten.
 - Sie können den richtigen Kanal für Ihren Access Point konfigurieren.
+
+## Lösungen / Dokumentation
+
+### Interface Informationen
+
+| Frage          | Antwort                       |
+| -------------- | ----------------------------- |
+| Hardware-Typ   | Intel(R) Wi-Fi 6 AX200 160MHz |
+| Frequenzbänder | 2.4GHz, 5GHz                  |
+| Anzahl         | 1                             |
+| Antenne        | 2x2                           |
+
