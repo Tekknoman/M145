@@ -4,16 +4,13 @@
 
 - Verbinden Sie mit einem Ethernet-Kabel einen Laptop der Gruppe mit dem Access Point, geben Sie sich eine statische IP Adresse aus dem Subnet *172.16.92.0/24* und rufen das Webinterface des Gerätes auf (172.16.92.51).
 - Versuchen Sie folgende Fragen zu Ihrem Gerät zu beantworten:
-<<<<<<< Updated upstream
 
   1. Welcher Hardware-Typ hat ihr WLAN interface (Marke + Modellnummer)?
   2. Welche Frequenzbänder unterstützt(en) ihr(e) WLAN interface(s)?
   3. Wie viele physischen WLAN interfaces sind auf ihrem Gerät vorhanden?
   4. Was für ein Typ Antenne besitzt ihr Gerät?
 
-=======
   1.  
->>>>>>> Stashed changes
 - Aktivieren Sie ihr WLAN interface.
 - Scannen Sie mithilfe der Funktion *Scan* des WLAN interfaces das 2.4 GHz Frequenzband ab. Welche Kanäle sind belegt? Verwenden Sie einen WLAN Kanalscanner auf einem Handy oder Laptop. Stellen Sie unterschiede fest?
 - Wenn Ihr Gerät 5GHz fähig ist, machen Sie das gleiche für dieses Frequenzband.
@@ -62,3 +59,29 @@
 | Anzahl         | 1                             |
 | Antenne        | 2x2                           |
 
+
+
+### Unterschied Scan AP und Smartphone 2.4 GHz
+
+Die Kanäle 1, 6 und 11 sind besetzt. 
+Auf dem AP sind viel mehr WLANs zu sehen.
+Wir haben dies herausgefunden, indem wir die Frequenzen angeschaut haben. 
+
+<img src="images/WLAN 2.4GHz AP.jpeg" alt="WLAN 2.4GHz AP" style="zoom:50%;" />
+
+<img src="images/WLAN 2.4GHz.jpeg" alt="WLAN 2.4GHz" style="zoom:25%;" />
+
+### Unterschied Scan AP und Smartphone 5 GHz
+
+Hier sind die Kanäle 36, 38, 48, zwischen 100 - 116 und zwischen 149 - 160. 
+Wir haben dies herausgefunden, indem wir die Frequenzen angeschaut haben. Dazu konnten wir feststellen, dass  es ein Frequenzloch zischen den Kanälen 52 und 100 gibt. Wenn ich nun ein 5GHz WLAN einrichten wollen würde, würde ich ein Kanal in diesem Bereich nehmen.
+
+<img src="images/WLAN 5GHz AP.jpeg" alt="WLAN 5GHz AP" style="zoom:50%;" />
+
+
+
+<img src="images/WLAN 5GHz Smartphone.jpeg" alt="WLAN 5GHz Smartphone" style="zoom:25%;" />
+
+### Halten sich die TBZ APs an die Kanäle 1, 6, 11?
+
+Wir konnten keine APs finden, welche sich nicht an diese Kanäle halten. Deshalb würde ich sagen, dass sich die TBZ APs an diese Kanäle halten. 
