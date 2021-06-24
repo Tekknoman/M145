@@ -48,6 +48,10 @@
 - Sie können mehrere SSIDs auf einem physischen WLAN interface aufschalten.
 - Sie können den richtigen Kanal für Ihren Access Point konfigurieren.
 
+## Parameter
+
+
+
 ## Lösungen / Dokumentation
 
 ### Interface Informationen
@@ -85,3 +89,153 @@ Wir haben dies herausgefunden, indem wir die Frequenzen angeschaut haben. Dazu k
 ### Halten sich die TBZ APs an die Kanäle 1, 6, 11?
 
 Wir konnten keine APs finden, welche sich nicht an diese Kanäle halten. Deshalb würde ich sagen, dass sich die TBZ APs an diese Kanäle halten. 
+
+## Mikrotik konfigurieren
+
+### Channels hinzufügen
+
+Unter Wireless> Channels > Add New
+
+#### 2.4GHz
+
+![image-20210624105428704](images/image-20210624105428704.png)
+
+Konfiguration entsprechen [Parameter](#Parameter)
+
+#### 5.0GHz
+
+![image-20210624105717719](images/image-20210624105717719.png)
+
+Konfiguration entsprechend [Parameter](#Parameter)
+
+### Interfaces Konfigurieren
+
+Unter Wireless > WiFi Interfaces
+
+#### wlan1 > Wireless
+
+![image-20210624110000631](images/image-20210624110000631.png)
+
+#### wlan2 > Wireless
+
+![image-20210624110114330](images/image-20210624110114330.png)
+
+### Überprüfung
+
+SSID wird angezeigt
+
+![image-20210624104819263](images/image-20210624104819263.png)
+
+Wir erhalten keine bzw. eine APIPA Adresse
+
+![image-20210624104924025](images/image-20210624104924025.png)
+
+Die Verbindungsgeschwindigkeit beträgt 144/144(Mbps)
+
+![image-20210624110310080](images/image-20210624110310080.png)
+
+Es wird pro Band (2.4 und 5.0) je ein Channel benutzt
+
+![image-20210624111050187](images/image-20210624111050187.png)
+
+
+
+![image-20210624111354714](images/image-20210624111354714.png)
+
+### Mehrere channels
+
+unter Wireless > Channels > Channel mit name 1 > Extension channel zu Ce ändern
+
+![image-20210624112028796](images/image-20210624112028796.png)
+
+![image-20210624112114389](images/image-20210624112114389.png)
+
+### Vlan einrichten
+
+Unter Interfaces > Interface > Add New
+
+#### VLAN
+
+![image-20210624113656937](images/image-20210624113656937.png)
+
+#### Virtual
+
+![image-20210624113731617](images/image-20210624113731617.png)
+
+#### Bridge > Add New
+
+![image-20210624113826893](images/image-20210624113826893.png)
+
+#### > Ports > Add New
+
+![image-20210624113906244](images/image-20210624113906244.png)
+
+![image-20210624113917820](images/image-20210624113917820.png)
+
+#### Überprüfung
+
+Wir sehen die SSID
+
+![image-20210624114302417](images/image-20210624114302417.png)
+
+Wir habe eine IP-Adresse erhalten
+
+![image-20210624114243086](images/image-20210624114243086.png)
+
+## Export
+
+```bash
+# jun/16/2021 21:07:39 by RouterOS 6.48.3
+# software id = BVUU-GTSJ
+#
+# model = RBcAPGi-5acD2nD
+# serial number = B9320AC905FA
+/interface bridge
+add name=bridge1
+/interface ethernet
+set [ find default-name=ether2 ] poe-out=off
+/interface vlan
+add interface=ether2 name=ether2_vlan145 vlan-id=145
+/interface wireless channels
+add band=2ghz-b/g/n extension-channel=Ce frequency=2412 list="2.4GHz Channels" name=1 width=20
+add band=2ghz-b/g/n frequency=2437 list="2.4GHz Channels" name=6 width=20
+add band=2ghz-b/g/n frequency=2462 list="2.4GHz Channels" name=11 width=20
+add frequency=5160 list="5GHz Channels" name=32 width=20
+add frequency=5180 list="5GHz Channels" name=36 width=20
+add frequency=5200 list="5GHz Channels" name=40 width=20
+/interface wireless
+set [ find default-name=wlan1 ] disabled=no frequency=1 mode=ap-bridge ssid="\F0\9F\8F\B3\EF\B8\8F\E2\80\8D\F0\9F\8C\88"
+set [ find default-name=wlan2 ] disabled=no frequency=40 mode=ap-bridge ssid="\F0\9F\8F\B3\EF\B8\8F\E2\80\8D\F0\9F\8C\88"
+add disabled=no mac-address=76:4D:28:86:F9:DD master-interface=wlan1 name=wlan3 ssid="Gruppe 4 Client" wds-default-bridge=bridge1 wps-mode=disabled
+/interface wireless security-profiles
+set [ find default=yes ] authentication-types=wpa2-psk group-ciphers=tkip,aes-ccm mode=dynamic-keys supplicant-identity=MikroTik unicast-ciphers=tkip,aes-ccm wpa-pre-shared-key=12345678 \
+    wpa2-pre-shared-key=EnteEnteEnte
+/user group
+set full policy=local,telnet,ssh,ftp,reboot,read,write,policy,test,winbox,password,web,sniff,sensitive,api,romon,dude,tikapp
+/interface bridge port
+add bridge=bridge1 interface=ether2_vlan145
+add bridge=bridge1 interface=wlan3
+/ip neighbor discovery-settings
+set discover-interface-list=!dynamic
+/ip address
+add address=172.16.92.51/24 comment="Default (DO NOT REMOVE)" interface=ether1 network=172.16.92.0
+/ip dhcp-client
+add disabled=no interface=ether2
+/ip ssh
+set forwarding-enabled=remote
+/system clock
+set time-zone-name=Europe/Zurich
+/system routerboard mode-button
+set enabled=yes on-event=dark-mode
+/system script
+add comment=defconf dont-require-permissions=no name=dark-mode owner=*sys policy=ftp,reboot,read,write,policy,test,password,sniff,sensitive,romon source="\r\
+    \n   :if ([system leds settings get all-leds-off] = \"never\") do={\r\
+    \n     /system leds settings set all-leds-off=immediate \r\
+    \n   } else={\r\
+    \n     /system leds settings set all-leds-off=never \r\
+    \n   }\r\
+    \n "
+```
+
+
+
