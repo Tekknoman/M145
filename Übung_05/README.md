@@ -48,10 +48,6 @@
 - Sie können mehrere SSIDs auf einem physischen WLAN interface aufschalten.
 - Sie können den richtigen Kanal für Ihren Access Point konfigurieren.
 
-## Parameter
-
-
-
 ## Lösungen / Dokumentation
 
 ### Interface Informationen
